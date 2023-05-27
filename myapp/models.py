@@ -30,5 +30,8 @@ class animalSpecies(models.Model):
 class Note(models.Model):
     animalSpecies = models.ForeignKey(animalSpecies, on_delete=models.CASCADE)
     note = models.TextField()
-    date = models.DateTimeField()
+    date = models.DateTimeField(blank=True, null=True)
+
+    def __str__(self) -> str:
+        return "{} - {}".format(self.animalSpecies, self.note, self.date)
 
